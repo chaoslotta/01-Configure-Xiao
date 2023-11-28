@@ -1,9 +1,8 @@
 #include <Arduino.h>
 //# include <U8x8lib.h>
 
-//#include <DHT.h>
+#include <DHT.h>
 
-//#include <cstdarg>
 #define DHTPIN 0 // what pin we're connected to
 
 // Uncomment whatever type you're using!
@@ -11,7 +10,7 @@
 // #define DHTTYPE DHT22   // DHT 22  (AM2302)
 //#define DHTTYPE DHT21   // DHT 21 (AM2301)
 
-// DHT dht(DHTPIN, DHTTYPE);
+DHT dht(DHTPIN, DHTTYPE);
 
 // U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(/*reset=*/U8X8_PIN_NONE);
 // U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(/*clock=*/ SCL, /*data=*/ SDA, /*reset=*/ U8X8_PIN_NONE);   // OLEDs without Reset of the Display
@@ -169,14 +168,14 @@ void loop(void)
     float temp = 0;
     float humi = 0;
 
-    //temp = dht.readTemperature();
-    //humi = dht.readHumidity();
+    temp = dht.readTemperature();
+    humi = dht.readHumidity();
 
     Serial.print("Humidity: ");
-    //Serial.print(humi);
+    Serial.print(humi);
     Serial.print(" %\t");
     Serial.print("Temperature: ");
-    //Serial.print(temp);
+    Serial.print(temp);
     Serial.println(" *C");
 /*
     u8x8.setCursor(0, 2);
